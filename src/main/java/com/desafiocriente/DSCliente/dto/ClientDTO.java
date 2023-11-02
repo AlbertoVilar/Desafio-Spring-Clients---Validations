@@ -1,15 +1,20 @@
 package com.desafiocriente.DSCliente.dto;
 
 import com.desafiocriente.DSCliente.entities.Client;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
 public class ClientDTO {
 
     private Long id;
+    @Size(min = 3, max = 80)
+    @NotBlank(message = "Campo requerido")
     private String name;
     private String cpf;
+    @Positive(message = "O salário deve ser positivo")
     private Double income;
+    @Past(message = "A data de nascimento não pode ser futura")
     private LocalDate birthDate;
     private Integer children;
 
